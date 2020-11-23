@@ -1,4 +1,3 @@
-dist/
 esm/
 cdn/
 webpack/
@@ -7,8 +6,6 @@ cdn.html
 analyzer.html
 /graphiql.*js
 /graphiql.*js.map
-/graphiql.*css
-/graphiql.*css.map
 example/yarn.lock
 example/graphiql.js
 example/graphiql.css
