@@ -23,12 +23,31 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GraphiQL = void 0;
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 var graphql_1 = require("graphql");
 var copy_to_clipboard_1 = __importDefault(require("copy-to-clipboard"));
 var ExecuteButton_1 = require("./ExecuteButton");
@@ -592,66 +611,72 @@ var GraphiQL = (function (_super) {
                 ? this.state.secondaryEditorHeight
                 : undefined,
         };
-        return (react_1.default.createElement("div", { ref: function (n) {
-                _this.graphiqlContainer = n;
-            }, className: "graphiql-container" },
-            react_1.default.createElement("div", { className: "historyPaneWrap", style: historyPaneStyle },
-                react_1.default.createElement(QueryHistory_1.QueryHistory, { ref: function (node) {
-                        _this._queryHistory = node;
-                    }, operationName: this.state.operationName, query: this.state.query, variables: this.state.variables, onSelectQuery: this.handleSelectHistoryQuery, storage: this._storage, queryID: this._editorQueryID },
-                    react_1.default.createElement("button", { className: "docExplorerHide", onClick: this.handleToggleHistory, "aria-label": "Close History" }, '\u2715'))),
-            react_1.default.createElement("div", { className: "editorWrap" },
-                react_1.default.createElement("div", { className: "topBarWrap" },
-                    react_1.default.createElement("div", { className: "topBar" },
-                        logo,
-                        react_1.default.createElement(ExecuteButton_1.ExecuteButton, { isRunning: Boolean(this.state.subscription), onRun: this.handleRunQuery, onStop: this.handleStopQuery, operations: this.state.operations }),
-                        toolbar),
-                    !this.state.docExplorerOpen && (react_1.default.createElement("button", { className: "docExplorerShow", onClick: this.handleToggleDocs, "aria-label": "Open Documentation Explorer" }, 'Docs'))),
-                react_1.default.createElement("div", { ref: function (n) {
-                        _this.editorBarComponent = n;
-                    }, className: "editorBar", onDoubleClick: this.handleResetResize, onMouseDown: this.handleResizeStart },
-                    react_1.default.createElement("div", { className: "queryWrap", style: queryWrapStyle },
-                        react_1.default.createElement(QueryEditor_1.QueryEditor, { ref: function (n) {
-                                _this.queryEditorComponent = n;
-                            }, schema: this.state.schema, value: this.state.query, onEdit: this.handleEditQuery, onHintInformationRender: this.handleHintInformationRender, onClickReference: this.handleClickReference, onCopyQuery: this.handleCopyQuery, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly }),
-                        react_1.default.createElement("section", { className: "variable-editor secondary-editor", style: secondaryEditorStyle, "aria-label": this.state.variableEditorActive
-                                ? 'Query Variables'
-                                : 'Request Headers' },
-                            react_1.default.createElement("div", { className: "secondary-editor-title variable-editor-title", id: "secondary-editor-title", style: {
-                                    cursor: secondaryEditorOpen ? 'row-resize' : 'n-resize',
-                                }, onMouseDown: this.handleSecondaryEditorResizeStart },
-                                react_1.default.createElement("div", { style: {
-                                        cursor: 'pointer',
-                                        color: this.state.variableEditorActive ? '#000' : 'gray',
-                                        display: 'inline-block',
-                                    }, onClick: this.handleOpenVariableEditorTab, onMouseDown: this.handleTabClickPropogation }, 'Query Variables'),
-                                this.state.headerEditorEnabled && (react_1.default.createElement("div", { style: {
-                                        cursor: 'pointer',
-                                        color: this.state.headerEditorActive ? '#000' : 'gray',
-                                        display: 'inline-block',
-                                        marginLeft: '20px',
-                                    }, onClick: this.handleOpenHeaderEditorTab, onMouseDown: this.handleTabClickPropogation }, 'Request Headers'))),
-                            react_1.default.createElement(VariableEditor_1.VariableEditor, { ref: function (n) {
-                                    _this.variableEditorComponent = n;
-                                }, value: this.state.variables, variableToType: this.state.variableToType, onEdit: this.handleEditVariables, onHintInformationRender: this.handleHintInformationRender, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly, active: this.state.variableEditorActive }),
-                            this.state.headerEditorEnabled && (react_1.default.createElement(HeaderEditor_1.HeaderEditor, { ref: function (n) {
-                                    _this.headerEditorComponent = n;
-                                }, value: this.state.headers, onEdit: this.handleEditHeaders, onHintInformationRender: this.handleHintInformationRender, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly, active: this.state.headerEditorActive })))),
-                    react_1.default.createElement("div", { className: "resultWrap" },
-                        this.state.isWaitingForResponse && (react_1.default.createElement("div", { className: "spinner-container" },
-                            react_1.default.createElement("div", { className: "spinner" }))),
-                        react_1.default.createElement(ResultViewer_1.ResultViewer, { registerRef: function (n) {
-                                _this.resultViewerElement = n;
-                            }, ref: function (c) {
-                                _this.resultComponent = c;
-                            }, value: this.state.response, editorTheme: this.props.editorTheme, ResultsTooltip: this.props.ResultsTooltip, ImagePreview: ImagePreview_1.ImagePreview }),
-                        footer))),
-            this.state.docExplorerOpen && (react_1.default.createElement("div", { className: docExplorerWrapClasses, style: docWrapStyle },
-                react_1.default.createElement("div", { className: "docExplorerResizer", onDoubleClick: this.handleDocsResetResize, onMouseDown: this.handleDocsResizeStart }),
-                react_1.default.createElement(DocExplorer_1.DocExplorer, { ref: function (c) {
-                        _this.docExplorerComponent = c;
-                    }, schema: this.state.schema },
-                    react_1.default.createElement("button", { className: "docExplorerHide", onClick: this.handleToggleDocs, "aria-label": "Close Documentation Explorer" }, '\u2715'))))));
+        return (react_1.default.createElement(react_1.Fragment, null,
+            this.props.render && this.props.render({
+                ExecuteButton: function () { return (react_1.default.createElement(ExecuteButton_1.ExecuteButton, { isRunning: Boolean(_this.state.subscription), onRun: _this.handleRunQuery, onStop: _this.handleStopQuery, operations: _this.state.operations })); },
+                handleToggleDocs: this.handleToggleDocs,
+                Logo: GraphiQL.Logo,
+            }),
+            react_1.default.createElement("div", { ref: function (n) {
+                    _this.graphiqlContainer = n;
+                }, className: "graphiql-container" },
+                react_1.default.createElement("div", { className: "historyPaneWrap", style: historyPaneStyle },
+                    react_1.default.createElement(QueryHistory_1.QueryHistory, { ref: function (node) {
+                            _this._queryHistory = node;
+                        }, operationName: this.state.operationName, query: this.state.query, variables: this.state.variables, onSelectQuery: this.handleSelectHistoryQuery, storage: this._storage, queryID: this._editorQueryID },
+                        react_1.default.createElement("button", { className: "docExplorerHide", onClick: this.handleToggleHistory, "aria-label": "Close History" }, '\u2715'))),
+                react_1.default.createElement("div", { className: "editorWrap" },
+                    react_1.default.createElement("div", { className: "topBarWrap" },
+                        react_1.default.createElement("div", { className: "topBar" },
+                            logo,
+                            react_1.default.createElement(ExecuteButton_1.ExecuteButton, { isRunning: Boolean(this.state.subscription), onRun: this.handleRunQuery, onStop: this.handleStopQuery, operations: this.state.operations }),
+                            toolbar),
+                        !this.state.docExplorerOpen && (react_1.default.createElement("button", { className: "docExplorerShow", onClick: this.handleToggleDocs, "aria-label": "Open Documentation Explorer" }, 'Docs'))),
+                    react_1.default.createElement("div", { ref: function (n) {
+                            _this.editorBarComponent = n;
+                        }, className: "editorBar", onDoubleClick: this.handleResetResize, onMouseDown: this.handleResizeStart },
+                        react_1.default.createElement("div", { className: "queryWrap", style: queryWrapStyle },
+                            react_1.default.createElement(QueryEditor_1.QueryEditor, { ref: function (n) {
+                                    _this.queryEditorComponent = n;
+                                }, schema: this.state.schema, value: this.state.query, onEdit: this.handleEditQuery, onHintInformationRender: this.handleHintInformationRender, onClickReference: this.handleClickReference, onCopyQuery: this.handleCopyQuery, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly }),
+                            react_1.default.createElement("section", { className: "variable-editor secondary-editor", style: secondaryEditorStyle, "aria-label": this.state.variableEditorActive
+                                    ? 'Query Variables'
+                                    : 'Request Headers' },
+                                react_1.default.createElement("div", { className: "secondary-editor-title variable-editor-title", id: "secondary-editor-title", style: {
+                                        cursor: secondaryEditorOpen ? 'row-resize' : 'n-resize',
+                                    }, onMouseDown: this.handleSecondaryEditorResizeStart },
+                                    react_1.default.createElement("div", { style: {
+                                            cursor: 'pointer',
+                                            color: this.state.variableEditorActive ? '#000' : 'gray',
+                                            display: 'inline-block',
+                                        }, onClick: this.handleOpenVariableEditorTab, onMouseDown: this.handleTabClickPropogation }, 'Query Variables'),
+                                    this.state.headerEditorEnabled && (react_1.default.createElement("div", { style: {
+                                            cursor: 'pointer',
+                                            color: this.state.headerEditorActive ? '#000' : 'gray',
+                                            display: 'inline-block',
+                                            marginLeft: '20px',
+                                        }, onClick: this.handleOpenHeaderEditorTab, onMouseDown: this.handleTabClickPropogation }, 'Request Headers'))),
+                                react_1.default.createElement(VariableEditor_1.VariableEditor, { ref: function (n) {
+                                        _this.variableEditorComponent = n;
+                                    }, value: this.state.variables, variableToType: this.state.variableToType, onEdit: this.handleEditVariables, onHintInformationRender: this.handleHintInformationRender, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly, active: this.state.variableEditorActive }),
+                                this.state.headerEditorEnabled && (react_1.default.createElement(HeaderEditor_1.HeaderEditor, { ref: function (n) {
+                                        _this.headerEditorComponent = n;
+                                    }, value: this.state.headers, onEdit: this.handleEditHeaders, onHintInformationRender: this.handleHintInformationRender, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly, active: this.state.headerEditorActive })))),
+                        react_1.default.createElement("div", { className: "resultWrap" },
+                            this.state.isWaitingForResponse && (react_1.default.createElement("div", { className: "spinner-container" },
+                                react_1.default.createElement("div", { className: "spinner" }))),
+                            react_1.default.createElement(ResultViewer_1.ResultViewer, { registerRef: function (n) {
+                                    _this.resultViewerElement = n;
+                                }, ref: function (c) {
+                                    _this.resultComponent = c;
+                                }, value: this.state.response, editorTheme: this.props.editorTheme, ResultsTooltip: this.props.ResultsTooltip, ImagePreview: ImagePreview_1.ImagePreview }),
+                            footer))),
+                this.state.docExplorerOpen && (react_1.default.createElement("div", { className: docExplorerWrapClasses, style: docWrapStyle },
+                    react_1.default.createElement("div", { className: "docExplorerResizer", onDoubleClick: this.handleDocsResetResize, onMouseDown: this.handleDocsResizeStart }),
+                    react_1.default.createElement(DocExplorer_1.DocExplorer, { ref: function (c) {
+                            _this.docExplorerComponent = c;
+                        }, schema: this.state.schema },
+                        react_1.default.createElement("button", { className: "docExplorerHide", onClick: this.handleToggleDocs, "aria-label": "Close Documentation Explorer" }, '\u2715')))))));
     };
     GraphiQL.prototype.getQueryEditor = function () {
         if (this.queryEditorComponent) {

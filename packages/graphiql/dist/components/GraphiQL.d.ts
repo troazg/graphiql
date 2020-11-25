@@ -34,6 +34,11 @@ export declare type Fetcher = (graphQLParams: FetcherParams, opts?: FetcherOpts)
 export declare type GraphiQLToolbarConfig = {
     additionalContent?: React.ReactNode;
 };
+declare type RenderProps = {
+    ExecuteButton: FunctionComponent;
+    Logo: FunctionComponent;
+    handleToggleDocs: (docExplorerOpen: boolean) => void;
+};
 export declare type GraphiQLProps = {
     fetcher: Fetcher;
     schema?: GraphQLSchema;
@@ -61,6 +66,7 @@ export declare type GraphiQLProps = {
     readOnly?: boolean;
     docExplorerOpen?: boolean;
     toolbar?: GraphiQLToolbarConfig;
+    render?: (args: RenderProps) => any;
 };
 export declare type GraphiQLState = {
     schema?: GraphQLSchema;
