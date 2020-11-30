@@ -573,20 +573,7 @@ var GraphiQL = (function (_super) {
     };
     GraphiQL.prototype.render = function () {
         var _this = this;
-        var _a;
         var children = react_1.default.Children.toArray(this.props.children);
-        var logo = find_1.default(children, function (child) {
-            return isChildComponentType(child, GraphiQL.Logo);
-        }) || react_1.default.createElement(GraphiQL.Logo, null);
-        var toolbar = find_1.default(children, function (child) {
-            return isChildComponentType(child, GraphiQL.Toolbar);
-        }) || (react_1.default.createElement(GraphiQL.Toolbar, null,
-            react_1.default.createElement(ToolbarButton_1.ToolbarButton, { onClick: this.handlePrettifyQuery, title: "Prettify Query (Shift-Ctrl-P)", label: "Prettify" }),
-            react_1.default.createElement(ToolbarButton_1.ToolbarButton, { onClick: this.handleMergeQuery, title: "Merge Query (Shift-Ctrl-M)", label: "Merge" }),
-            react_1.default.createElement(ToolbarButton_1.ToolbarButton, { onClick: this.handleCopyQuery, title: "Copy Query (Shift-Ctrl-C)", label: "Copy" }),
-            react_1.default.createElement(ToolbarButton_1.ToolbarButton, { onClick: this.handleToggleHistory, title: "Show History", label: "History" }),
-            ((_a = this.props.toolbar) === null || _a === void 0 ? void 0 : _a.additionalContent) ? this.props.toolbar.additionalContent
-                : null));
         var footer = find_1.default(children, function (child) {
             return isChildComponentType(child, GraphiQL.Footer);
         });
@@ -611,72 +598,68 @@ var GraphiQL = (function (_super) {
                 ? this.state.secondaryEditorHeight
                 : undefined,
         };
-        return (react_1.default.createElement(react_1.Fragment, null,
-            this.props.render && this.props.render({
-                ExecuteButton: function () { return (react_1.default.createElement(ExecuteButton_1.ExecuteButton, { isRunning: Boolean(_this.state.subscription), onRun: _this.handleRunQuery, onStop: _this.handleStopQuery, operations: _this.state.operations })); },
-                handleToggleDocs: this.handleToggleDocs,
-                Logo: GraphiQL.Logo,
-            }),
-            react_1.default.createElement("div", { ref: function (n) {
+        return (react_1.default.createElement(react_1.Fragment, null, this.props.render && this.props.render({
+            ExecuteButton: function () { return (react_1.default.createElement(ExecuteButton_1.ExecuteButton, { isRunning: Boolean(_this.state.subscription), onRun: _this.handleRunQuery, onStop: _this.handleStopQuery, operations: _this.state.operations })); },
+            handleToggleDocs: this.handleToggleDocs,
+            Logo: GraphiQL.Logo,
+            DocExplorer: function (_a) {
+                var onToggleDocs = _a.onToggleDocs;
+                return (react_1.default.createElement("div", { className: docExplorerWrapClasses, style: docWrapStyle },
+                    react_1.default.createElement("div", { className: "docExplorerResizer", onDoubleClick: _this.handleDocsResetResize, onMouseDown: _this.handleDocsResizeStart }),
+                    react_1.default.createElement(DocExplorer_1.DocExplorer, { ref: function (c) {
+                            _this.docExplorerComponent = c;
+                        }, schema: _this.state.schema },
+                        react_1.default.createElement("button", { className: "docExplorerHide", onClick: onToggleDocs, "aria-label": "Close Documentation Explorer" }, '\u2715'))));
+            },
+            GraphiQLEditor: function () { return (react_1.default.createElement("div", { ref: function (n) {
                     _this.graphiqlContainer = n;
                 }, className: "graphiql-container" },
                 react_1.default.createElement("div", { className: "historyPaneWrap", style: historyPaneStyle },
                     react_1.default.createElement(QueryHistory_1.QueryHistory, { ref: function (node) {
                             _this._queryHistory = node;
-                        }, operationName: this.state.operationName, query: this.state.query, variables: this.state.variables, onSelectQuery: this.handleSelectHistoryQuery, storage: this._storage, queryID: this._editorQueryID },
-                        react_1.default.createElement("button", { className: "docExplorerHide", onClick: this.handleToggleHistory, "aria-label": "Close History" }, '\u2715'))),
+                        }, operationName: _this.state.operationName, query: _this.state.query, variables: _this.state.variables, onSelectQuery: _this.handleSelectHistoryQuery, storage: _this._storage, queryID: _this._editorQueryID },
+                        react_1.default.createElement("button", { className: "docExplorerHide", onClick: _this.handleToggleHistory, "aria-label": "Close History" }, '\u2715'))),
                 react_1.default.createElement("div", { className: "editorWrap" },
-                    react_1.default.createElement("div", { className: "topBarWrap" },
-                        react_1.default.createElement("div", { className: "topBar" },
-                            logo,
-                            react_1.default.createElement(ExecuteButton_1.ExecuteButton, { isRunning: Boolean(this.state.subscription), onRun: this.handleRunQuery, onStop: this.handleStopQuery, operations: this.state.operations }),
-                            toolbar),
-                        !this.state.docExplorerOpen && (react_1.default.createElement("button", { className: "docExplorerShow", onClick: this.handleToggleDocs, "aria-label": "Open Documentation Explorer" }, 'Docs'))),
                     react_1.default.createElement("div", { ref: function (n) {
                             _this.editorBarComponent = n;
-                        }, className: "editorBar", onDoubleClick: this.handleResetResize, onMouseDown: this.handleResizeStart },
+                        }, className: "editorBar", onDoubleClick: _this.handleResetResize, onMouseDown: _this.handleResizeStart },
                         react_1.default.createElement("div", { className: "queryWrap", style: queryWrapStyle },
                             react_1.default.createElement(QueryEditor_1.QueryEditor, { ref: function (n) {
                                     _this.queryEditorComponent = n;
-                                }, schema: this.state.schema, value: this.state.query, onEdit: this.handleEditQuery, onHintInformationRender: this.handleHintInformationRender, onClickReference: this.handleClickReference, onCopyQuery: this.handleCopyQuery, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly }),
-                            react_1.default.createElement("section", { className: "variable-editor secondary-editor", style: secondaryEditorStyle, "aria-label": this.state.variableEditorActive
+                                }, schema: _this.state.schema, value: _this.state.query, onEdit: _this.handleEditQuery, onHintInformationRender: _this.handleHintInformationRender, onClickReference: _this.handleClickReference, onCopyQuery: _this.handleCopyQuery, onPrettifyQuery: _this.handlePrettifyQuery, onMergeQuery: _this.handleMergeQuery, onRunQuery: _this.handleEditorRunQuery, editorTheme: _this.props.editorTheme, readOnly: _this.props.readOnly }),
+                            react_1.default.createElement("section", { className: "variable-editor secondary-editor", style: secondaryEditorStyle, "aria-label": _this.state.variableEditorActive
                                     ? 'Query Variables'
                                     : 'Request Headers' },
                                 react_1.default.createElement("div", { className: "secondary-editor-title variable-editor-title", id: "secondary-editor-title", style: {
                                         cursor: secondaryEditorOpen ? 'row-resize' : 'n-resize',
-                                    }, onMouseDown: this.handleSecondaryEditorResizeStart },
+                                    }, onMouseDown: _this.handleSecondaryEditorResizeStart },
                                     react_1.default.createElement("div", { style: {
                                             cursor: 'pointer',
-                                            color: this.state.variableEditorActive ? '#000' : 'gray',
+                                            color: _this.state.variableEditorActive ? '#000' : 'gray',
                                             display: 'inline-block',
-                                        }, onClick: this.handleOpenVariableEditorTab, onMouseDown: this.handleTabClickPropogation }, 'Query Variables'),
-                                    this.state.headerEditorEnabled && (react_1.default.createElement("div", { style: {
+                                        }, onClick: _this.handleOpenVariableEditorTab, onMouseDown: _this.handleTabClickPropogation }, 'Query Variables'),
+                                    _this.state.headerEditorEnabled && (react_1.default.createElement("div", { style: {
                                             cursor: 'pointer',
-                                            color: this.state.headerEditorActive ? '#000' : 'gray',
+                                            color: _this.state.headerEditorActive ? '#000' : 'gray',
                                             display: 'inline-block',
                                             marginLeft: '20px',
-                                        }, onClick: this.handleOpenHeaderEditorTab, onMouseDown: this.handleTabClickPropogation }, 'Request Headers'))),
+                                        }, onClick: _this.handleOpenHeaderEditorTab, onMouseDown: _this.handleTabClickPropogation }, 'Request Headers'))),
                                 react_1.default.createElement(VariableEditor_1.VariableEditor, { ref: function (n) {
                                         _this.variableEditorComponent = n;
-                                    }, value: this.state.variables, variableToType: this.state.variableToType, onEdit: this.handleEditVariables, onHintInformationRender: this.handleHintInformationRender, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly, active: this.state.variableEditorActive }),
-                                this.state.headerEditorEnabled && (react_1.default.createElement(HeaderEditor_1.HeaderEditor, { ref: function (n) {
+                                    }, value: _this.state.variables, variableToType: _this.state.variableToType, onEdit: _this.handleEditVariables, onHintInformationRender: _this.handleHintInformationRender, onPrettifyQuery: _this.handlePrettifyQuery, onMergeQuery: _this.handleMergeQuery, onRunQuery: _this.handleEditorRunQuery, editorTheme: _this.props.editorTheme, readOnly: _this.props.readOnly, active: _this.state.variableEditorActive }),
+                                _this.state.headerEditorEnabled && (react_1.default.createElement(HeaderEditor_1.HeaderEditor, { ref: function (n) {
                                         _this.headerEditorComponent = n;
-                                    }, value: this.state.headers, onEdit: this.handleEditHeaders, onHintInformationRender: this.handleHintInformationRender, onPrettifyQuery: this.handlePrettifyQuery, onMergeQuery: this.handleMergeQuery, onRunQuery: this.handleEditorRunQuery, editorTheme: this.props.editorTheme, readOnly: this.props.readOnly, active: this.state.headerEditorActive })))),
+                                    }, value: _this.state.headers, onEdit: _this.handleEditHeaders, onHintInformationRender: _this.handleHintInformationRender, onPrettifyQuery: _this.handlePrettifyQuery, onMergeQuery: _this.handleMergeQuery, onRunQuery: _this.handleEditorRunQuery, editorTheme: _this.props.editorTheme, readOnly: _this.props.readOnly, active: _this.state.headerEditorActive })))),
                         react_1.default.createElement("div", { className: "resultWrap" },
-                            this.state.isWaitingForResponse && (react_1.default.createElement("div", { className: "spinner-container" },
+                            _this.state.isWaitingForResponse && (react_1.default.createElement("div", { className: "spinner-container" },
                                 react_1.default.createElement("div", { className: "spinner" }))),
                             react_1.default.createElement(ResultViewer_1.ResultViewer, { registerRef: function (n) {
                                     _this.resultViewerElement = n;
                                 }, ref: function (c) {
                                     _this.resultComponent = c;
-                                }, value: this.state.response, editorTheme: this.props.editorTheme, ResultsTooltip: this.props.ResultsTooltip, ImagePreview: ImagePreview_1.ImagePreview }),
-                            footer))),
-                this.state.docExplorerOpen && (react_1.default.createElement("div", { className: docExplorerWrapClasses, style: docWrapStyle },
-                    react_1.default.createElement("div", { className: "docExplorerResizer", onDoubleClick: this.handleDocsResetResize, onMouseDown: this.handleDocsResizeStart }),
-                    react_1.default.createElement(DocExplorer_1.DocExplorer, { ref: function (c) {
-                            _this.docExplorerComponent = c;
-                        }, schema: this.state.schema },
-                        react_1.default.createElement("button", { className: "docExplorerHide", onClick: this.handleToggleDocs, "aria-label": "Close Documentation Explorer" }, '\u2715')))))));
+                                }, value: _this.state.response, editorTheme: _this.props.editorTheme, ResultsTooltip: _this.props.ResultsTooltip, ImagePreview: ImagePreview_1.ImagePreview }),
+                            footer))))); },
+        })));
     };
     GraphiQL.prototype.getQueryEditor = function () {
         if (this.queryEditorComponent) {

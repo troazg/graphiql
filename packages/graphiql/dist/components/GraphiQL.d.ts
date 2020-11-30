@@ -37,6 +37,10 @@ export declare type GraphiQLToolbarConfig = {
 declare type RenderProps = {
     ExecuteButton: FunctionComponent;
     Logo: FunctionComponent;
+    GraphiQLEditor: FunctionComponent;
+    DocExplorer: FunctionComponent<{
+        onToggleDocs: any;
+    }>;
     handleToggleDocs: (docExplorerOpen: boolean) => void;
 };
 export declare type GraphiQLProps = {
