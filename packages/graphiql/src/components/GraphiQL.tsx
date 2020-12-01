@@ -103,11 +103,10 @@ export type GraphiQLToolbarConfig = {
 };
 
 type RenderProps = {
-  ExecuteButton: FunctionComponent;
+  ExecuteButton: FunctionComponent<{className: string}>;
   Logo: FunctionComponent;
   GraphiQLEditor: FunctionComponent;
   DocExplorer: FunctionComponent<{ onToggleDocs: any }>;
-  handleToggleDocs: (docExplorerOpen: boolean) => void;
 }
 
 export type GraphiQLProps = {
@@ -460,15 +459,15 @@ export class GraphiQL extends React.Component<GraphiQLProps, GraphiQLState> {
     return (
       <Fragment>
         {this.props.render && this.props.render({
-          ExecuteButton: () => (
+          ExecuteButton: ({ className }) => (
             <ExecuteButton
+              className={className}
               isRunning={Boolean(this.state.subscription)}
               onRun={this.handleRunQuery}
               onStop={this.handleStopQuery}
               operations={this.state.operations}
             />
           ),
-          handleToggleDocs: this.handleToggleDocs,
           Logo: GraphiQL.Logo,
           DocExplorer: ({ onToggleDocs }) => (
             <div className={docExplorerWrapClasses} style={docWrapStyle}>

@@ -86,7 +86,7 @@ var ExecuteButton = (function (_super) {
         }
         var pathJSX = this.props.isRunning ? (react_1.default.createElement("path", { d: "M 10 10 L 23 10 L 23 23 L 10 23 z" })) : (react_1.default.createElement("path", { d: "M 11 9 L 24 16 L 11 23 z" }));
         return (react_1.default.createElement("div", { className: "execute-button-wrap" },
-            react_1.default.createElement("button", { type: "button", className: "execute-button", onMouseDown: onMouseDown, onClick: onClick, title: "Execute Query (Ctrl-Enter)" },
+            react_1.default.createElement("button", { type: "button", className: "execute-button " + this.props.className, onMouseDown: onMouseDown, onClick: onClick, title: "Execute Query (Ctrl-Enter)" },
                 react_1.default.createElement("svg", { width: "34", height: "34" }, pathJSX)),
             options));
     };

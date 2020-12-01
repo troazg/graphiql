@@ -35,13 +35,14 @@ export declare type GraphiQLToolbarConfig = {
     additionalContent?: React.ReactNode;
 };
 declare type RenderProps = {
-    ExecuteButton: FunctionComponent;
+    ExecuteButton: FunctionComponent<{
+        className: string;
+    }>;
     Logo: FunctionComponent;
     GraphiQLEditor: FunctionComponent;
     DocExplorer: FunctionComponent<{
         onToggleDocs: any;
     }>;
-    handleToggleDocs: (docExplorerOpen: boolean) => void;
 };
 export declare type GraphiQLProps = {
     fetcher: Fetcher;

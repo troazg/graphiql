@@ -19,6 +19,7 @@ type ExecuteButtonProps = {
   isRunning: boolean;
   onStop: () => void;
   onRun: (value?: string) => void;
+  className?: string;
 };
 
 type ExecuteButtonState = {
@@ -92,7 +93,7 @@ export class ExecuteButton extends React.Component<
       <div className="execute-button-wrap">
         <button
           type="button"
-          className="execute-button"
+          className={`execute-button ${this.props.className}`}
           onMouseDown={onMouseDown}
           onClick={onClick}
           title="Execute Query (Ctrl-Enter)">

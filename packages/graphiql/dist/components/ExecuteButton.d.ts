@@ -5,6 +5,7 @@ declare type ExecuteButtonProps = {
     isRunning: boolean;
     onStop: () => void;
     onRun: (value?: string) => void;
+    className?: string;
 };
 declare type ExecuteButtonState = {
     optionsOpen: boolean;

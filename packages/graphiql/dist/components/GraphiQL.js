@@ -599,8 +599,10 @@ var GraphiQL = (function (_super) {
                 : undefined,
         };
         return (react_1.default.createElement(react_1.Fragment, null, this.props.render && this.props.render({
-            ExecuteButton: function () { return (react_1.default.createElement(ExecuteButton_1.ExecuteButton, { isRunning: Boolean(_this.state.subscription), onRun: _this.handleRunQuery, onStop: _this.handleStopQuery, operations: _this.state.operations })); },
-            handleToggleDocs: this.handleToggleDocs,
+            ExecuteButton: function (_a) {
+                var className = _a.className;
+                return (react_1.default.createElement(ExecuteButton_1.ExecuteButton, { className: className, isRunning: Boolean(_this.state.subscription), onRun: _this.handleRunQuery, onStop: _this.handleStopQuery, operations: _this.state.operations }));
+            },
             Logo: GraphiQL.Logo,
             DocExplorer: function (_a) {
                 var onToggleDocs = _a.onToggleDocs;
