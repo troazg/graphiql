@@ -12,12 +12,28 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExecuteButton = void 0;
-var react_1 = __importDefault(require("react"));
+var react_1 = __importStar(require("react"));
 var ExecuteButton = (function (_super) {
     __extends(ExecuteButton, _super);
     function ExecuteButton(props) {
@@ -85,7 +101,7 @@ var ExecuteButton = (function (_super) {
             onMouseDown = this._onOptionsOpen;
         }
         var pathJSX = this.props.isRunning ? (react_1.default.createElement("path", { d: "M 10 10 L 23 10 L 23 23 L 10 23 z" })) : (react_1.default.createElement("path", { d: "M 11 9 L 24 16 L 11 23 z" }));
-        return (react_1.default.createElement("div", { className: "execute-button-wrap" },
+        return (react_1.default.createElement(react_1.Fragment, null,
             react_1.default.createElement("button", { type: "button", className: "execute-button " + this.props.className, onMouseDown: onMouseDown, onClick: onClick, title: "Execute Query (Ctrl-Enter)" },
                 react_1.default.createElement("svg", { width: "34", height: "34" }, pathJSX)),
             options));

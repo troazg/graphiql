@@ -4,7 +4,7 @@
  *  This source code is licensed under the MIT license found in the
  *  LICENSE file in the root directory of this source tree.
  */
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler, Fragment } from 'react';
 import { OperationDefinitionNode } from 'graphql';
 
 /**
@@ -90,7 +90,7 @@ export class ExecuteButton extends React.Component<
     );
 
     return (
-      <div className="execute-button-wrap">
+      <Fragment>
         <button
           type="button"
           className={`execute-button ${this.props.className}`}
@@ -102,7 +102,7 @@ export class ExecuteButton extends React.Component<
           </svg>
         </button>
         {options}
-      </div>
+      </Fragment>
     );
   }
 
