@@ -1,4 +1,5 @@
 .graphiql-container,
+.docExplorerWrap,
 .graphiql-container button,
 .graphiql-container input {
   color: #141823;
@@ -67,7 +68,7 @@
   display: flex;
 }
 
-.graphiql-container .docExplorerShow,
+.docExplorerShow,
 .graphiql-container .historyShow {
   background: linear-gradient(#f7f7f7, #e2e2e2);
   border-radius: 0;
@@ -81,7 +82,7 @@
   padding: 2px 20px 0 18px;
 }
 
-.graphiql-container .docExplorerShow {
+.docExplorerShow {
   border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -90,7 +91,7 @@
   border-left: 0;
 }
 
-.graphiql-container .docExplorerShow:before {
+.docExplorerShow:before {
   border-left: 2px solid #3B5998;
   border-top: 2px solid #3B5998;
   content: '';
@@ -123,7 +124,7 @@
   position: relative;
 }
 
-.graphiql-container .docExplorerWrap,
+.docExplorerWrap,
 .graphiql-container .historyPaneWrap {
   background: white;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);

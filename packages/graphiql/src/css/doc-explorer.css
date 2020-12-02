@@ -1,9 +1,9 @@
-.graphiql-container .doc-explorer {
+.doc-explorer {
   background: white;
 }
 
-.graphiql-container .doc-explorer-title-bar,
-.graphiql-container .history-title-bar {
+.doc-explorer-title-bar,
+.history-title-bar {
   cursor: default;
   display: flex;
   height: 34px;
@@ -13,11 +13,10 @@
   user-select: none;
 }
 
-.graphiql-container .doc-explorer-title,
-.graphiql-container .history-title {
+.doc-explorer-title,
+.history-title {
   flex: 1;
   font-weight: bold;
-  overflow-x: hidden;
   padding: 10px 0 10px 10px;
   text-align: center;
   text-overflow: ellipsis;
@@ -25,7 +24,7 @@
   white-space: nowrap;
 }
 
-.graphiql-container .doc-explorer-back {
+.doc-explorer-back {
   color: #3B5998;
   cursor: pointer;
   margin: -7px 0 -6px -8px;
@@ -42,7 +41,7 @@
   width: 0;
 }
 
-.graphiql-container .doc-explorer-back:before {
+.doc-explorer-back:before {
   border-left: 2px solid #3B5998;
   border-top: 2px solid #3B5998;
   content: '';
@@ -54,12 +53,12 @@
   width: 9px;
 }
 
-.graphiql-container .doc-explorer-rhs {
+.doc-explorer-rhs {
   position: relative;
 }
 
-.graphiql-container .doc-explorer-contents,
-.graphiql-container .history-contents {
+.doc-explorer-contents,
+.history-contents {
   background-color: #ffffff;
   border-top: 1px solid #d6d6d6;
   bottom: 0;
@@ -71,36 +70,36 @@
   top: 47px;
 }
 
-.graphiql-container .doc-explorer-contents {
+.doc-explorer-contents {
   min-width: 300px;
 }
 
-.graphiql-container .doc-type-description p:first-child ,
-.graphiql-container .doc-type-description blockquote:first-child {
+.doc-type-description p:first-child ,
+.doc-type-description blockquote:first-child {
   margin-top: 0;
 }
 
-.graphiql-container .doc-explorer-contents a {
+.doc-explorer-contents a {
   cursor: pointer;
   text-decoration: none;
 }
 
-.graphiql-container .doc-explorer-contents a:hover {
+.doc-explorer-contents a:hover {
   text-decoration: underline;
 }
 
-.graphiql-container .doc-value-description > :first-child {
+.doc-value-description > :first-child {
   margin-top: 4px;
 }
 
-.graphiql-container .doc-value-description > :last-child {
+.doc-value-description > :last-child {
   margin-bottom: 4px;
 }
 
-.graphiql-container .doc-type-description code,
-.graphiql-container .doc-type-description pre,
-.graphiql-container .doc-category code,
-.graphiql-container .doc-category pre {
+.doc-type-description code,
+.doc-type-description pre,
+.doc-category code,
+.doc-category pre {
   --saf-0: rgba(var(--sk_foreground_low,29,28,29),0.13);
   font-size: 12px;
   line-height: 1.50001;
@@ -114,8 +113,8 @@
   tab-size: 4;
 }
 
-.graphiql-container .doc-type-description code,
-.graphiql-container .doc-category code {
+.doc-type-description code,
+.doc-category code {
   padding: 2px 3px 1px;
   border: 1px solid var(--saf-0);
   border-radius: 3px;
@@ -124,11 +123,11 @@
   background-color: white;
 }
 
-.graphiql-container .doc-category {
+.doc-category {
   margin: 20px 0;
 }
 
-.graphiql-container .doc-category-title {
+.doc-category-title {
   border-bottom: 1px solid #e0e0e0;
   color: #777;
   cursor: default;
@@ -141,59 +140,59 @@
   user-select: none;
 }
 
-.graphiql-container .doc-category-item {
+.doc-category-item {
   margin: 12px 0;
   color: #555;
 }
 
-.graphiql-container .keyword {
+.keyword {
   color: #B11A04;
 }
 
-.graphiql-container .type-name {
+.type-name {
   color: #CA9800;
 }
 
-.graphiql-container .field-name {
+.field-name {
   color: #1F61A0;
 }
 
-.graphiql-container .field-short-description {
+.field-short-description {
   color: #999;
   margin-left: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.graphiql-container .enum-value {
+.enum-value {
   color: #0B7FC7;
 }
 
-.graphiql-container .arg-name {
+.arg-name {
   color: #8B2BB9;
 }
 
-.graphiql-container .arg {
+.arg {
   display: block;
   margin-left: 1em;
 }
 
-.graphiql-container .arg:first-child:last-child,
-.graphiql-container .arg:first-child:nth-last-child(2),
-.graphiql-container .arg:first-child:nth-last-child(2) ~ .arg {
+.arg:first-child:last-child,
+.arg:first-child:nth-last-child(2),
+.arg:first-child:nth-last-child(2) ~ .arg {
   display: inherit;
   margin: inherit;
 }
 
-.graphiql-container .arg:first-child:nth-last-child(2):after {
+.arg:first-child:nth-last-child(2):after {
   content: ', ';
 }
 
-.graphiql-container .arg-default-value {
+.arg-default-value {
   color: #43A047;
 }
 
-.graphiql-container .doc-deprecation {
+.doc-deprecation {
   background: #fffae8;
   box-shadow: inset 0 0 1px #bfb063;
   color: #867F70;
@@ -205,7 +204,7 @@
   border-radius: 3px;
 }
 
-.graphiql-container .doc-deprecation:before {
+.doc-deprecation:before {
   content: 'Deprecated:';
   color: #c79b2e;
   cursor: default;
@@ -219,15 +218,15 @@
   user-select: none;
 }
 
-.graphiql-container .doc-deprecation > :first-child {
+.doc-deprecation > :first-child {
   margin-top: 0;
 }
 
-.graphiql-container .doc-deprecation > :last-child {
+.doc-deprecation > :last-child {
   margin-bottom: 0;
 }
 
-.graphiql-container .show-btn {
+.show-btn {
   -webkit-appearance: initial;
   display: block;
   border-radius: 3px;
@@ -241,7 +240,7 @@
   cursor: pointer;
 }
 
-.graphiql-container .search-box {
+.search-box {
   border-bottom: 1px solid #d3d6db;
   display: block;
   font-size: 14px;
@@ -249,7 +248,7 @@
   position: relative;
 }
 
-.graphiql-container .search-box-icon {
+.search-box-icon {
   cursor: pointer;
   display: block;
   font-size: 24px;
@@ -259,7 +258,7 @@
   user-select: none;
 }
 
-.graphiql-container .search-box .search-box-clear {
+.search-box .search-box-clear {
   background-color: #d0d0d0;
   border-radius: 12px;
   color: #fff;
@@ -273,11 +272,11 @@
   border: 0;
 }
 
-.graphiql-container .search-box .search-box-clear:hover {
+.search-box .search-box-clear:hover {
   background-color: #b9b9b9;
 }
 
-.graphiql-container .search-box > input {
+.search-box > input {
   border: none;
   box-sizing: border-box;
   font-size: 14px;
@@ -286,7 +285,7 @@
   width: 100%;
 }
 
-.graphiql-container .error-container {
+.error-container {
   font-weight: bold;
   left: 0;
   letter-spacing: 1px;

@@ -104,7 +104,7 @@ export type GraphiQLToolbarConfig = {
 
 type RenderProps = {
   ExecuteButton: FunctionComponent<{className: string}>;
-  Logo: FunctionComponent;
+  Logo: FunctionComponent<{className: string}>;
   GraphiQLEditor: FunctionComponent;
   DocExplorer: FunctionComponent<{ onToggleDocs: any }>;
 }
