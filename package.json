@@ -1,4 +1,5 @@
 {
+  "name": "graphiql-forked",
   "private": false,
   "license": "MIT",
   "workspaces": [
