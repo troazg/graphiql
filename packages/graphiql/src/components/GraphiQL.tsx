@@ -105,8 +105,8 @@ export type GraphiQLToolbarConfig = {
 type RenderProps = {
   ExecuteButton: FunctionComponent<{className: string}>;
   Logo: FunctionComponent<{className: string}>;
-  GraphiQLEditor: FunctionComponent;
   DocExplorer: FunctionComponent<{ onToggleDocs: any }>;
+  GraphiQLEditor: React.ReactNode;
 }
 
 export type GraphiQLProps = {
@@ -469,28 +469,7 @@ export class GraphiQL extends React.Component<GraphiQLProps, GraphiQLState> {
             />
           ),
           Logo: GraphiQL.Logo,
-          DocExplorer: ({ onToggleDocs }) => (
-            <div className={docExplorerWrapClasses} style={docWrapStyle}>
-              <div
-                className="docExplorerResizer"
-                onDoubleClick={this.handleDocsResetResize}
-                onMouseDown={this.handleDocsResizeStart}
-              />
-              <DocExplorer
-                ref={c => {
-                  this.docExplorerComponent = c;
-                }}
-                schema={this.state.schema}>
-                <button
-                  className="docExplorerHide"
-                  onClick={onToggleDocs}
-                  aria-label="Close Documentation Explorer">
-                  {'\u2715'}
-                </button>
-              </DocExplorer>
-            </div>
-          ),
-          GraphiQLEditor: () => (
+          GraphiQLEditor: (
             <div
               ref={n => {
                 this.graphiqlContainer = n;
@@ -635,6 +614,27 @@ export class GraphiQL extends React.Component<GraphiQLProps, GraphiQLState> {
                   </div>
                 </div>
               </div>
+            </div>
+          ),
+          DocExplorer: ({ onToggleDocs }) => (
+            <div className={docExplorerWrapClasses} style={docWrapStyle}>
+              <div
+                className="docExplorerResizer"
+                onDoubleClick={this.handleDocsResetResize}
+                onMouseDown={this.handleDocsResizeStart}
+              />
+              <DocExplorer
+                ref={c => {
+                  this.docExplorerComponent = c;
+                }}
+                schema={this.state.schema}>
+                <button
+                  className="docExplorerHide"
+                  onClick={onToggleDocs}
+                  aria-label="Close Documentation Explorer">
+                  {'\u2715'}
+                </button>
+              </DocExplorer>
             </div>),
           })
         }

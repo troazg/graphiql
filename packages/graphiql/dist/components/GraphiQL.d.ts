@@ -41,10 +41,10 @@ declare type RenderProps = {
     Logo: FunctionComponent<{
         className: string;
     }>;
-    GraphiQLEditor: FunctionComponent;
     DocExplorer: FunctionComponent<{
         onToggleDocs: any;
     }>;
+    GraphiQLEditor: React.ReactNode;
 };
 export declare type GraphiQLProps = {
     fetcher: Fetcher;
