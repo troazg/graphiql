@@ -1,6 +1,6 @@
 {
   "name": "graphiql-forked",
-  "version": "custom",
+  "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "workspaces": [
